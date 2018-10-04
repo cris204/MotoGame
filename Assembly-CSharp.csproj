@@ -61,9 +61,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\ObstaclePool.cs" />
-    <Compile Include="Assets\Scripts\ObstaclesBehaviour.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Obstacles\Obstacle.cs" />
+    <Compile Include="Assets\Scripts\Obstacles\ObstaclePool.cs" />
+    <Compile Include="Assets\Scripts\Obstacles\ObstaclesBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerCollision.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/Proyects/MotoGame/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
