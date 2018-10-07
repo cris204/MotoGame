@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -15,6 +16,10 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField]
     private int score;
+    [SerializeField]
+    private Text scoreTxt;
+    [SerializeField]
+    private float timing;
 
     private void Awake()
     {
@@ -31,6 +36,25 @@ public class GameManager : MonoBehaviour {
     private void Start()
     {
         
+    }
+
+    private void Update()
+    {
+        timing += Time.deltaTime;
+        if (timing > 3)
+        {
+            ObstaculesSpawn();
+        }
+    }
+
+    private void ObstaculesSpawn()
+    {
+        ObstacleSpawn.Instance.NewObstacle();
+    }
+
+    private void UpdateScore()
+    {
+        scoreTxt.text = string.Format("Score:{0}", score.ToString());
     }
 
     public void GameOver()

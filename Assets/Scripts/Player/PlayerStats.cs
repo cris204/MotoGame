@@ -19,6 +19,10 @@ public class PlayerStats : MonoBehaviour
     private float life;
     [SerializeField]
     private float gas;
+    [SerializeField]
+    private SpriteRenderer characterSprite;
+    
+    public CharacterScriptableObj character;
 
     private void Awake()
     {
@@ -30,18 +34,9 @@ public class PlayerStats : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        characterSprite = GetComponent<SpriteRenderer>();
+        life = character.life;
+        characterSprite.sprite = character.artCharacter;
     }
 
     public void Damage(float damage)
@@ -76,9 +71,6 @@ public class PlayerStats : MonoBehaviour
             gas = value;
         }
     }
-
-
-
 
     #endregion
 

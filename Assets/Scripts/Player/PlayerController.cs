@@ -17,13 +17,10 @@ public class PlayerController : MonoBehaviour {
     private Vector2 speedMove;
 
 
-
-	// Use this for initialization
 	void Awake () {
         rb = GetComponent<Rigidbody2D>();
 	}
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))

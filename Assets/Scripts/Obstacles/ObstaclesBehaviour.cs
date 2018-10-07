@@ -10,8 +10,6 @@ public class ObstaclesBehaviour : MonoBehaviour {
     private float speed=-50;
     private Vector2 speedVector;
 
-
-    [SerializeField]
     public Obstacle obstacle;
 
     [SerializeField]
@@ -38,6 +36,7 @@ public class ObstaclesBehaviour : MonoBehaviour {
     private void OnBecameInvisible()
     {
         ObstaclePool.Instance.ReleaseObstacles(rb);
+       // ObstaclePool.Instance.GetObstacles();
     }
 
     #region GettersAndSetters
