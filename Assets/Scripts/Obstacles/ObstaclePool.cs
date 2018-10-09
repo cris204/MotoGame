@@ -62,6 +62,7 @@ public class ObstaclePool : MonoBehaviour
     private void AddObstacles()
     {
         instanceObstacle = Instantiate(obstaclePrefab);
+        instanceObstacle.name = System.Guid.NewGuid().ToString();
         instanceObstacle.gameObject.SetActive(false);
         obstacles.Add(instanceObstacle);
     }

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+
+
     private static GameManager instnace;
     public static GameManager Instance
     {
@@ -20,6 +22,8 @@ public class GameManager : MonoBehaviour {
     private Text scoreTxt;
     [SerializeField]
     private float timing;
+    [SerializeField]
+    private float obstacleSpeed;
 
     private void Awake()
     {
@@ -44,6 +48,7 @@ public class GameManager : MonoBehaviour {
         if (timing > 3)
         {
             ObstaculesSpawn();
+            timing = 0;
         }
     }
 
@@ -66,4 +71,21 @@ public class GameManager : MonoBehaviour {
     {
 
     }
+
+    #region SetAndGet
+
+    public float ObstacleSpeed
+    {
+        get
+        {
+            return obstacleSpeed;
+        }
+
+        set
+        {
+            obstacleSpeed = value;
+        }
+    }
+    #endregion
+
 }

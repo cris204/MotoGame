@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
 
+
     private static PlayerStats instance;
     public static PlayerStats Instance
     {
@@ -13,7 +14,7 @@ public class PlayerStats : MonoBehaviour
             return instance;
         }
     }
-
+    public string idRef;
 
     [SerializeField]
     private float life;
@@ -37,12 +38,21 @@ public class PlayerStats : MonoBehaviour
         characterSprite = GetComponent<SpriteRenderer>();
         life = character.life;
         characterSprite.sprite = character.artCharacter;
+
+
+        
     }
 
-    public void Damage(float damage)
+    public void Damage(string id, float damage)
     {
-        Life-=damage;
+        if (idRef == id)
+        {
+            Life -= damage;
+            PlayerStats.Instance.idRef = "";
+            Debug.Log(Life);
+        }
     }
+
 
     #region GettersAndSetters
 

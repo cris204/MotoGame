@@ -325,6 +325,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   scoreTxt: {fileID: 0}
+  timing: 0
+  obstacleSpeed: -100
 --- !u!114 &188374561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7e87fa42f8083488cc4280351ce11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timing: 0
 --- !u!4 &188374562
 Transform:
   m_ObjectHideFlags: 0

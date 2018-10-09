@@ -9,7 +9,7 @@ public class ObstaclesBehaviour : MonoBehaviour {
     [SerializeField]
     private float speed=-50;
     private Vector2 speedVector;
-
+    public string id;
     public Obstacle obstacle;
 
     [SerializeField]
@@ -21,23 +21,34 @@ public class ObstaclesBehaviour : MonoBehaviour {
 
     private void Start()
     {
+        speedVector.x = 0;
         GetComponent<SpriteRenderer>().sprite = obstacle.artObstacle;
         damage = obstacle.damage;
+        PlayerCollision.OnDamaged += DamageDone;
     }
 
     private void OnEnable()
     {
-        speedVector.x = 0;
+        //speed = GameManager.Instance.ObstacleSpeed;
+    }
+
+    private void FixedUpdate()
+    {
         speedVector.y = speed * Time.deltaTime;
         rb.velocity = speedVector;
-        speed -= 30;
     }
 
     private void OnBecameInvisible()
     {
         ObstaclePool.Instance.ReleaseObstacles(rb);
-       // ObstaclePool.Instance.GetObstacles();
+        PlayerCollision.OnDamaged -= DamageDone;
     }
+
+    public void DamageDone(string id)
+    {
+        PlayerStats.Instance.Damage(id,Damage);
+    }
+
 
     #region GettersAndSetters
 
