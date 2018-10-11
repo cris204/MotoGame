@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour {
 
@@ -13,13 +13,12 @@ public class GameManager : MonoBehaviour {
             return instnace;
         }
     }
-
     [SerializeField]
-    private int score;
+    private float timingObstacles;
     [SerializeField]
-    private Text scoreTxt;
+    private float timingMoreSpeed;
     [SerializeField]
-    private float timing;
+    private float obstacleSpeed;
 
     private void Awake()
     {
@@ -40,30 +39,57 @@ public class GameManager : MonoBehaviour {
 
     private void Update()
     {
-        timing += Time.deltaTime;
-        if (timing > 3)
-        {
-            ObstaculesSpawn();
-        }
+        timingObstacles += Time.deltaTime;
+        timingMoreSpeed += Time.deltaTime;
+        ObstaculesSpawn();
+        IncreaseObstacleSpeed();
+
     }
 
     private void ObstaculesSpawn()
     {
-        ObstacleSpawn.Instance.NewObstacle();
+        if (timingObstacles > 3)
+        {
+            ObstacleSpawn.Instance.NewObstacle();
+            timingObstacles = 0;
+        }
+
     }
 
-    private void UpdateScore()
+    private void IncreaseObstacleSpeed()
     {
-        scoreTxt.text = string.Format("Score:{0}", score.ToString());
+        if (timingMoreSpeed > 20)
+        {
+            ObstacleSpeed -= 30;
+            timingMoreSpeed = 0;
+        }
+
     }
 
     public void GameOver()
     {
-
+        CanvasManager.Instance.GameOverActivate();
     }
     
     public void NextLevel()
     {
 
     }
+
+    #region GetAndSet
+    public float ObstacleSpeed
+    {
+        get
+        {
+            return obstacleSpeed;
+        }
+
+        set
+        {
+            obstacleSpeed = value;
+        }
+    }
+
+    #endregion
+
 }

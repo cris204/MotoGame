@@ -61,11 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CanvasManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Obstacles\Obstacle.cs" />
     <Compile Include="Assets\Scripts\Obstacles\ObstaclePool.cs" />
     <Compile Include="Assets\Scripts\Obstacles\ObstaclesBehaviour.cs" />
-    <Compile Include="Assets\Scripts\ObstacleSpawn.cs" />
+    <Compile Include="Assets\Scripts\Obstacles\ObstacleSpawn.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterScriptableObj.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCollision.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />

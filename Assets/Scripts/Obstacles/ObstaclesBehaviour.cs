@@ -7,7 +7,8 @@ public class ObstaclesBehaviour : MonoBehaviour {
 
     private Rigidbody2D rb;
     [SerializeField]
-    private float speed=-50;
+    private float speed;
+    [SerializeField]
     private Vector2 speedVector;
 
     public Obstacle obstacle;
@@ -23,20 +24,30 @@ public class ObstaclesBehaviour : MonoBehaviour {
     {
         GetComponent<SpriteRenderer>().sprite = obstacle.artObstacle;
         damage = obstacle.damage;
+        speedVector.x = 0;
     }
 
-    private void OnEnable()
+    private void Update()
     {
-        speedVector.x = 0;
-        speedVector.y = speed * Time.deltaTime;
-        rb.velocity = speedVector;
-        speed -= 30;
+        speed = GameManager.Instance.ObstacleSpeed;
+        speedVector.y = GameManager.Instance.ObstacleSpeed * Time.deltaTime;
     }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = speedVector;
+    }
+
 
     private void OnBecameInvisible()
     {
         ObstaclePool.Instance.ReleaseObstacles(rb);
        // ObstaclePool.Instance.GetObstacles();
+    }
+
+    void DamageDone()
+    {
+        PlayerStats.Instance.Damage(Damage);
     }
 
     #region GettersAndSetters

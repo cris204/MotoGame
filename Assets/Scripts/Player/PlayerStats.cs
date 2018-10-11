@@ -42,6 +42,10 @@ public class PlayerStats : MonoBehaviour
     public void Damage(float damage)
     {
         Life-=damage;
+        if (Life <= 0)
+        {
+            GameManager.Instance.GameOver();
+        }
     }
 
     #region GettersAndSetters
