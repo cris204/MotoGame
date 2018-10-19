@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour {
 
     private void IncreaseObstacleSpeed()
     {
-        if (timingMoreSpeed > 2)
+        if (timingMoreSpeed > 10)
         {
             ObstacleSpeed -= 30;
             timingMoreSpeed = 0;
