@@ -1,77 +1,61 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class CanvasManager : MonoBehaviour {
 
     private static CanvasManager instance;
-    public static CanvasManager Instance
-    {
-        get
-        {
+    public static CanvasManager Instance {
+        get {
             return instance;
         }
     }
 
-
     [SerializeField]
-    private Text scoreTxt;
+    private TMPro.TextMeshProUGUI scoreTxt;
 
     [SerializeField]
     private GameObject gameOver;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
+    private void Awake () {
+        if (instance == null) {
             instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
+        } else {
+            Destroy (this.gameObject);
         }
     }
 
     void Update () {
-        
-        UpdateScore();
+
+        UpdateScore ();
     }
 
-    private void UpdateScore()
-    {
-        scoreTxt.text = string.Format("Score: {0}", GameManager.Instance.Score.ToString("F0"));
+    private void UpdateScore () {
+        scoreTxt.text = string.Format (GameManager.Instance.Score.ToString ("F0"));
     }
 
-    public void GameOverActivate()
-    {
-       
-        GameOver.SetActive(true);
+    public void GameOverActivate () {
+
+        GameOver.SetActive (true);
     }
 
-    public void ReStart(string name)
-    {
-        SceneManager.LoadScene(name);
+    public void ReStart (string name) {
+        SceneManager.LoadScene (name);
     }
 
     #region GetAndSet
 
-
-    public GameObject GameOver
-    {
-        get
-        {
+    public GameObject GameOver {
+        get {
             return gameOver;
         }
 
-        set
-        {
+        set {
             gameOver = value;
         }
     }
-
 
     #endregion
 }

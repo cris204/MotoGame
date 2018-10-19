@@ -2,151 +2,123 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class GameManager : MonoBehaviour {
 
     private static GameManager instnace;
-    public static GameManager Instance
-    {
-        get
-        {
+    public static GameManager Instance {
+        get {
             return instnace;
         }
     }
-    [SerializeField]
-    private float timingObstacles;
-    [SerializeField]
-    private float timingMoreSpeed;
-    [SerializeField]
-    private float obstacleSpeed;
-    [SerializeField]
-    private int maxObstacle;
-    [SerializeField]
-    private int obstaclesCount;
-    [SerializeField]
-    private float speedToSpaawn;
-    [SerializeField]
-    private float score;
 
-    private void Awake()
-    {
-        if (instnace == null)
-        {
+    [SerializeField] private float timingObstacles;
+    [SerializeField] private float timingMoreSpeed;
+    [SerializeField] private float obstacleSpeed;
+    [SerializeField] private int maxObstacle;
+    [SerializeField] private int obstaclesCount;
+    [SerializeField] private float speedToSpaawn;
+    [SerializeField] private float score;
+    [SerializeField] private float multiplier;
+    private float minMultiplier;
+    private float maxMultiplier;
+
+    private void Awake () {
+        if (instnace == null) {
             instnace = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
+        } else {
+            Destroy (this.gameObject);
         }
     }
 
-    private void Start()
-    {
+    private void Start () {
         SpeedToSpaawn = 1;
+        multiplier = minMultiplier;
     }
 
-    private void Update()
-    {
+    private void Update () {
         timingObstacles += Time.deltaTime;
         timingMoreSpeed += Time.deltaTime;
-        ObstaculesSpawn();
-        IncreaseObstacleSpeed();
-        IncreaseScore();
+        ObstaculesSpawn ();
+        IncreaseObstacleSpeed ();
+        IncreaseScore ();
     }
 
-    private void ObstaculesSpawn()
-    {
-        SpeedToSpaawn =  1 / (Time.timeSinceLevelLoad*0.01f);//parameterize
-        if (timingObstacles > SpeedToSpaawn && ObstaclesCount<MaxObstacle)
-        {
-            ObstacleSpawn.Instance.NewObstacle();
+    private void ObstaculesSpawn () {
+        SpeedToSpaawn = 1 / (Time.timeSinceLevelLoad * 0.01f); //parameterize
+        if (timingObstacles > SpeedToSpaawn && ObstaclesCount < MaxObstacle) {
+            ObstacleSpawn.Instance.NewObstacle ();
             timingObstacles = 0;
             ObstaclesCount++;
         }
     }
 
-    private void IncreaseObstacleSpeed()
-    {
-        if (timingMoreSpeed > 10)
-        {
+    private void IncreaseObstacleSpeed () {
+        if (timingMoreSpeed > 10) {
             ObstacleSpeed -= 30;
             timingMoreSpeed = 0;
         }
     }
 
-    public void GameOver()
-    {
-        CanvasManager.Instance.GameOverActivate();
+    public void GameOver () {
+        CanvasManager.Instance.GameOverActivate ();
     }
-    
-    public void IncreaseScore()
-    {
+
+    public void IncreaseScore () {
         Score += Time.deltaTime;
+    }
+
+    public void IncreaseMultiplier () {
+
     }
 
     #region GetAndSet
 
-    public float ObstacleSpeed
-    {
-        get
-        {
+    public float ObstacleSpeed {
+        get {
             return obstacleSpeed;
         }
 
-        set
-        {
+        set {
             obstacleSpeed = value;
         }
     }
 
-    public float SpeedToSpaawn
-    {
-        get
-        {
+    public float SpeedToSpaawn {
+        get {
             return speedToSpaawn;
         }
 
-        set
-        {
+        set {
             speedToSpaawn = value;
         }
     }
 
-    public int MaxObstacle
-    {
-        get
-        {
+    public int MaxObstacle {
+        get {
             return maxObstacle;
         }
 
-        set
-        {
+        set {
             maxObstacle = value;
         }
     }
 
-    public float Score
-    {
-        get
-        {
+    public float Score {
+        get {
             return score;
         }
 
-        set
-        {
+        set {
             score = value;
         }
     }
 
-    public int ObstaclesCount
-    {
-        get
-        {
+    public int ObstaclesCount {
+        get {
             return obstaclesCount;
         }
 
-        set
-        {
+        set {
             obstaclesCount = value;
         }
     }
