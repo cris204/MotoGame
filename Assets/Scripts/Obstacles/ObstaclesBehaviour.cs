@@ -42,7 +42,7 @@ public class ObstaclesBehaviour : MonoBehaviour {
     private void OnBecameInvisible()
     {
         ObstaclePool.Instance.ReleaseObstacles(rb);
-       // ObstaclePool.Instance.GetObstacles();
+        GameManager.Instance.ObstaclesCount--;
     }
 
     void DamageDone()

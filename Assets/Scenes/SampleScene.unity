@@ -126,7 +126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4877333252621960, guid: db16da715ed975441bb9fac81f76b233, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4877333252621960, guid: db16da715ed975441bb9fac81f76b233, type: 2}
       propertyPath: m_LocalPosition.z
@@ -163,6 +163,24 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 32427f8060910a44a8a3e582140addba,
         type: 2}
+    - target: {fileID: 212389662999751682, guid: db16da715ed975441bb9fac81f76b233,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: db7be4be2043c80468b93a106c9ef430,
+        type: 3}
+    - target: {fileID: 4877333252621960, guid: db16da715ed975441bb9fac81f76b233, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.18279
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877333252621960, guid: db16da715ed975441bb9fac81f76b233, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.18279
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877333252621960, guid: db16da715ed975441bb9fac81f76b233, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.18279
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db16da715ed975441bb9fac81f76b233, type: 2}
   m_IsPrefabAsset: 0
@@ -466,6 +484,10 @@ MonoBehaviour:
   timingObstacles: 0
   timingMoreSpeed: 0
   obstacleSpeed: -200
+  maxObstacle: 10
+  obstaclesCount: 0
+  speedToSpaawn: 0
+  score: 0
 --- !u!114 &188374561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,7 +523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba00fb18932acd74e8d930b2b6693651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   scoreTxt: {fileID: 760416988}
   gameOver: {fileID: 1617502267}
 --- !u!1 &222956753

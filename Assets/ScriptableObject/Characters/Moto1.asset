@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Moto1
   m_EditorClassIdentifier: 
   characterName: Motorcycle
-  artCharacter: {fileID: 21300000, guid: a7e761cf2a4ee5d41ac91c2e0b711859, type: 3}
+  artCharacter: {fileID: 21300000, guid: db7be4be2043c80468b93a106c9ef430, type: 3}
   life: 0

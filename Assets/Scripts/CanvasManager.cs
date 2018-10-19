@@ -16,8 +16,7 @@ public class CanvasManager : MonoBehaviour {
         }
     }
 
-    [SerializeField]
-    private float score;
+
     [SerializeField]
     private Text scoreTxt;
 
@@ -37,13 +36,13 @@ public class CanvasManager : MonoBehaviour {
     }
 
     void Update () {
-        Score += Time.deltaTime;
+        
         UpdateScore();
     }
 
     private void UpdateScore()
     {
-        scoreTxt.text = string.Format("Score: {0}", Score.ToString("F0"));
+        scoreTxt.text = string.Format("Score: {0}", GameManager.Instance.Score.ToString("F0"));
     }
 
     public void GameOverActivate()
@@ -58,18 +57,7 @@ public class CanvasManager : MonoBehaviour {
     }
 
     #region GetAndSet
-    public float Score
-    {
-        get
-        {
-            return score;
-        }
 
-        set
-        {
-            score = value;
-        }
-    }
 
     public GameObject GameOver
     {
