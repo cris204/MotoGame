@@ -13,11 +13,10 @@ public class CanvasManager : MonoBehaviour {
         }
     }
 
-    [SerializeField]
-    private TMPro.TextMeshProUGUI scoreTxt;
+    [SerializeField] private TMPro.TextMeshProUGUI scoreTxt;
+    [SerializeField] private TMPro.TextMeshProUGUI multiplierTxt;
 
-    [SerializeField]
-    private GameObject gameOver;
+    [SerializeField] private GameObject gameOver;
 
     private void Awake () {
         if (instance == null) {
@@ -28,12 +27,17 @@ public class CanvasManager : MonoBehaviour {
     }
 
     void Update () {
-
         UpdateScore ();
+        UpdateMultiplier ();
     }
 
     private void UpdateScore () {
         scoreTxt.text = string.Format (GameManager.Instance.Score.ToString ("F0"));
+    }
+
+    private void UpdateMultiplier () {
+        multiplierTxt.text = string.Format ("x" + GameManager.Instance.Multiplier.ToString ("F2"));
+
     }
 
     public void GameOverActivate () {

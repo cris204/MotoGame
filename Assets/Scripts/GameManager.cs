@@ -18,9 +18,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private int obstaclesCount;
     [SerializeField] private float speedToSpaawn;
     [SerializeField] private float score;
-    [SerializeField] private float multiplier;
-    private float minMultiplier;
-    private float maxMultiplier;
+    [SerializeField] private float multiplier = 1;
+    private float minMultiplier = 1;
+    private float maxMultiplier = 30;
 
     private void Awake () {
         if (instnace == null) {
@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour {
         ObstaculesSpawn ();
         IncreaseObstacleSpeed ();
         IncreaseScore ();
+        DecreaseMultiplier ();
     }
 
     private void ObstaculesSpawn () {
@@ -64,11 +65,21 @@ public class GameManager : MonoBehaviour {
     }
 
     public void IncreaseScore () {
-        Score += Time.deltaTime;
+        Score += Time.deltaTime * multiplier;
     }
 
-    public void IncreaseMultiplier () {
+    public void IncreaseMultiplier (float amount) {
+        multiplier += amount;
 
+        if (multiplier >= maxMultiplier)
+            multiplier = maxMultiplier;
+    }
+
+    public void DecreaseMultiplier () {
+        multiplier -= Time.deltaTime * 0.05f;
+
+        if (multiplier <= minMultiplier)
+            multiplier = minMultiplier;
     }
 
     #region GetAndSet
@@ -110,6 +121,15 @@ public class GameManager : MonoBehaviour {
 
         set {
             score = value;
+        }
+    }
+
+    public float Multiplier {
+        get {
+            return multiplier;
+        }
+        set {
+            multiplier = value;
         }
     }
 
