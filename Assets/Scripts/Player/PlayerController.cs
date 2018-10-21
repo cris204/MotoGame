@@ -44,11 +44,22 @@ public class PlayerController : MonoBehaviour {
 
     void Raycasting () {
         Collider2D[] colliders = Physics2D.OverlapCircleAll (transform.position, 0.5f, obstaclesLayer);
-        // if (colliders.Length > 0) {
         for (int i = 0; i < colliders.Length; i++) {
             GameManager.Instance.IncreaseMultiplier (0.02f);
             Debug.Log (colliders[i].name);
         }
+    }
+
+    public void TurnLeftButton () {
+        rb.velocity = new Vector2 (-speedMove.x, 0);
+    }
+
+    public void TurnRightButton () {
+        rb.velocity = new Vector2 (speedMove.x, 0);
+    }
+
+    public void SetVelocityZero () {
+        rb.velocity = Vector2.zero;
     }
 
     private void OnDrawGizmos () {

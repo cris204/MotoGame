@@ -65,20 +65,20 @@ public class GameManager : MonoBehaviour {
     }
 
     public void IncreaseScore () {
-        Score += Time.deltaTime * multiplier;
+        Score += Time.deltaTime * Multiplier;
     }
 
     public void IncreaseMultiplier (float amount) {
-        multiplier += amount;
+        Multiplier += amount;
 
-        if (multiplier >= maxMultiplier)
-            multiplier = maxMultiplier;
+        if (Multiplier >= maxMultiplier)
+            Multiplier = maxMultiplier;
     }
 
     public void DecreaseMultiplier () {
-        multiplier -= Time.deltaTime * 0.05f;
+        Multiplier -= Time.deltaTime * 0.05f;
 
-        if (multiplier <= minMultiplier)
+        if (Multiplier <= minMultiplier)
             multiplier = minMultiplier;
     }
 
