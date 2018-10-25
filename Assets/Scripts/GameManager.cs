@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start () {
-        SpeedToSpaawn = 1;
+        SpeedToSpaawn = 0;
         multiplier = minMultiplier;
     }
 
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void ObstaculesSpawn () {
-        SpeedToSpaawn = 1 / (Time.timeSinceLevelLoad * 0.01f); //parameterize
+        SpeedToSpaawn = 1 / (Time.timeSinceLevelLoad * 0.08f); //parameterize
         if (timingObstacles > SpeedToSpaawn && ObstaclesCount < MaxObstacle) {
             ObstacleSpawn.Instance.NewObstacle ();
             timingObstacles = 0;
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void IncreaseObstacleSpeed () {
-        if (timingMoreSpeed > 10) {
+        if (timingMoreSpeed > 5) {
             ObstacleSpeed -= 30;
             timingMoreSpeed = 0;
         }

@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour {
     [Header ("General"), SerializeField] private float speed = 100;
     private float h;
     private float deltaSpeed;
-    private Vector2 speedMove;
+    [SerializeField]
+    Collider2D[] colliders;
 
     [SerializeField] private LayerMask obstaclesLayer;
 
@@ -23,39 +24,31 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown (KeyCode.K)) {
             ObstaclePool.Instance.GetObstacles ();
         }
-        InputMovement ();
         deltaSpeed = Time.deltaTime * speed;
 
         Raycasting ();
     }
 
     private void FixedUpdate () {
-        Movement ();
+
     }
 
-    void InputMovement () {
-        h = Input.GetAxis ("Horizontal");
-        speedMove.x = h * deltaSpeed;
-    }
-
-    void Movement () {
-        rb.velocity = speedMove;
-    }
 
     void Raycasting () {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll (transform.position, 0.5f, obstaclesLayer);
+        colliders = Physics2D.OverlapCircleAll (transform.position, 0.5f, obstaclesLayer);
         for (int i = 0; i < colliders.Length; i++) {
             GameManager.Instance.IncreaseMultiplier (0.02f);
             Debug.Log (colliders[i].name);
         }
+        
     }
 
     public void TurnLeftButton () {
-        rb.velocity = new Vector2 (-speedMove.x, 0);
+        rb.velocity = new Vector2 (-deltaSpeed, 0);
     }
 
     public void TurnRightButton () {
-        rb.velocity = new Vector2 (speedMove.x, 0);
+        rb.velocity = new Vector2 (deltaSpeed, 0);
     }
 
     public void SetVelocityZero () {
